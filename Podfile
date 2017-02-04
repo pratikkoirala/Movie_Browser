@@ -7,5 +7,6 @@ target 'MovieBrowser' do
 
   # Pods for MovieBrowser
   pod 'AFNetworking'
+  pod ‘MBProgressHUD’
 
 end
