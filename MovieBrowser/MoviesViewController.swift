@@ -10,14 +10,18 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var movieData: [NSDictionary]?
+    var filteredData: [NSDictionary]!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        searchBar.delegate = self
         tableView.delegate = self
+        
         
         // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()
@@ -43,6 +47,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     print(dataDictionary)
                     
                     self.movieData = (dataDictionary["results"] as! [NSDictionary])
+                    self.filteredData = self.movieData
                     self.tableView.reloadData()
                 }
             }
@@ -87,7 +92,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if let movies = movieData {
+        if let movies = filteredData {
             return movies.count
         }
         else {
@@ -96,7 +101,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let eachMovie = movieData![indexPath.row]
+        let eachMovie = filteredData![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         let posterPath = eachMovie["poster_path"] as! String
         let baseURL = "https://image.tmdb.org/t/p/w342"
@@ -112,6 +117,22 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         print(movieTitle)
         
         return cell
+    }
+    
+    // This method updates filteredData based on the text in the Search Box
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        // When user has entered text into the search box
+        // Use the filter method to iterate over all items in the data array
+        // For each item, return true if the item should be included and false if the
+        // item should NOT be included
+        filteredData = searchText.isEmpty ? movieData : movieData?.filter({(data: NSDictionary) -> Bool in
+            let title = data["title"] as! String
+            // If dataItem matches the searchText, return true to include it
+            return title.range(of: searchText, options: .caseInsensitive) != nil
+        })
+        
+        self.tableView.reloadData()
     }
 
     /*
