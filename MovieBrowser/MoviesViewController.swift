@@ -126,7 +126,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     print("Image was NOT cached, fade in image")
                     cell.posterView.alpha = 0.0
                     cell.posterView.image = image
-                    UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                    UIView.animate(withDuration: 0.7, animations: { () -> Void in
                         cell.posterView.alpha = 1.0
                     })
                 } else {
