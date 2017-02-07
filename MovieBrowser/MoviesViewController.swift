@@ -73,6 +73,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 if let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
                     
                     self.movieData = (dataDictionary["results"] as! [NSDictionary])
+                    
+                    self.filteredData = self.movieData
+
                     //Reload the tableView after getting the new data
                     self.tableView.reloadData()
                     //Tell the refreshControl to stop spinning
@@ -132,6 +135,18 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             return title.range(of: searchText, options: .caseInsensitive) != nil
         })
         
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        filteredData = movieData
+        searchBar.resignFirstResponder()
         self.tableView.reloadData()
     }
 
