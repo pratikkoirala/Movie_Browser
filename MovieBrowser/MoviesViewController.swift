@@ -106,12 +106,19 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let eachMovie = filteredData![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
+        
+        // Use a orange color when the user selects the cell
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.orange
+        cell.selectedBackgroundView = backgroundView
+        
         let movieTitle = eachMovie["title"] as! String
         let overView = eachMovie["overview"] as! String
         
