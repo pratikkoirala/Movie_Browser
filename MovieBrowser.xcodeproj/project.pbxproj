@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30A23E2D1E527693000A2607 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A23E2C1E527693000A2607 /* MovieDetailsViewController.swift */; };
 		30FD66461E410B2E0044E9B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FD66451E410B2E0044E9B9 /* AppDelegate.swift */; };
 		30FD664B1E410B2E0044E9B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30FD66491E410B2E0044E9B9 /* Main.storyboard */; };
 		30FD664D1E410B2E0044E9B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30FD664C1E410B2E0044E9B9 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30A23E2C1E527693000A2607 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		30FD66421E410B2E0044E9B9 /* MovieBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FD66451E410B2E0044E9B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30FD664A1E410B2E0044E9B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				30FD66571E410C160044E9B9 /* MoviesViewController.swift */,
+				30A23E2C1E527693000A2607 /* MovieDetailsViewController.swift */,
 			);
 			name = "view controllers";
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A23E2D1E527693000A2607 /* MovieDetailsViewController.swift in Sources */,
 				30FD66461E410B2E0044E9B9 /* AppDelegate.swift in Sources */,
 				30FD66581E410C160044E9B9 /* MoviesViewController.swift in Sources */,
 				30FD665B1E41413F0044E9B9 /* MovieCell.swift in Sources */,
@@ -394,6 +398,7 @@
 				30FD66561E410B2E0044E9B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
