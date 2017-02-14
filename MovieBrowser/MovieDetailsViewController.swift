@@ -12,13 +12,17 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var detailmovieView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var movieView: UIImageView!
     var movie: NSDictionary = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: detailmovieView.frame.origin.y + detailmovieView.frame.size.height)
         titleLabel.text = movie["title"] as? String
         overviewLabel.text = movie["overview"] as? String
+        overviewLabel.sizeToFit()
         // Do any additional setup after loading the view.
         if let posterPath = movie["poster_path"] as? String{
             let baseURL = "https://image.tmdb.org/t/p/w342"
